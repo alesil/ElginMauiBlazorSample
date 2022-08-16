@@ -33,3 +33,13 @@
             font-size: small;
             color: gray;
         }
+
+@media (max-height: 500px) {
+    .page .content {
+        height: 100vh;
+    }
+
+    .page .footer {
+        visibility: hidden;
+    }
+}

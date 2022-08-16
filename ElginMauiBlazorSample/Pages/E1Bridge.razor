@@ -1,3 +1,117 @@
 ﻿@page "/e1bridge"
 
-<h1>E1 - Bridge</h1>
+<h2 class="mx-3 mt-1 mb-2 fw-bold">E1 - BRIDGE</h2>
+
+<div class="container-fluid px-3">
+    <div class="col">
+
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col-5 align-self-center fw-bold">IP:</div>
+                    <div class="col"><input id="ip" class="form-control" inputmode="numeric" placeholder="127.0.0.1" /> </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-7 mx-0 pe-0 align-self-center fw-bold">PORTAS TRANSAÇÕES/SLIDE:</div>
+                    <div class="col-2 mx-2 px-0"><input id="transacoes" class="form-control" inputmode="numeric" placeholder="3000" /> </div>
+                    <div class="col-2 mx-1 px-0"><input id="slide" class="form-control" inputmode="numeric" placeholder="3001" /> </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col">
+                <div class="row">
+                    <div class="col-5 align-self-center fw-bold">VALOR:</div>
+                    <div class="col"><input id="valor" class="form-control" type="number" inputmode="numeric" placeholder="200" /> </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-12 align-self-center fw-bold">
+                        <div class="form-check form-switch mt-1">
+                            <input class="form-check-input" type="checkbox" id="usar-senha">
+                            <label class="form-check-label" for="usar-senha">ENVIAR SENHA NAS TRANSAÇÕES</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col">
+                <div class="row">
+                    <div class="col-5 align-self-center fw-bold">N° PARCELAS:</div>
+                    <div class="col text-end"><input id="parcelas" class="form-control" type="number" inputmode="numeric" placeholder="1" /></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-5 align-self-center fw-bold">SENHA:</div>
+                    <div class="col"><input id="senha" class="form-control" inputmode="numeric" /> </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE DE BAIXO-->
+
+        <div class="row mt-2">
+            <!-- ESQUERDA -->
+            <div class="col">
+                <div class="row">
+                    <div class="align-self-center fw-bold">FORMAS DE PAGAMENTO:</div>
+                    <div class="btn-group forma-pagamento" role="group">
+                        <input type="radio" class="btn-check" name="btnpagamento" id="btn-credito" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary p-1" for="btn-credito">CRÉDITO</label>
+
+                        <input type="radio" class="btn-check" name="btnpagamento" id="btn-debito" autocomplete="off">
+                        <label class="btn btn-outline-success p-1" for="btn-debito">DÉBITO</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="align-self-center fw-bold">TIPO DE PARCELAMENTO:</div>
+                    <div class="btn-group forma-pagamento" role="group">
+                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-loja" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary p-1" for="btn-loja">LOJA</label>
+
+                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-adm" autocomplete="off">
+                        <label class="btn btn-outline-warning p-1" for="btn-adm">ADM</label>
+
+                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-avista" autocomplete="off">
+                        <label class="btn btn-outline-success p-1" for="btn-avista">A VISTA</label>
+                    </div>
+                </div>
+                <!-- BOTÕES -->
+                <div class="row mt-4">
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success btn-sm">ENVIAR TRANSAÇÃO</button>
+                        <button type="button" class="btn btn-danger btn-sm">CANCELAR TRANSAÇÃO</button>
+                        <button type="button" class="btn btn-primary btn-sm">OPERAÇÃO ADM</button>
+                        <button type="button" class="btn btn-warning btn-sm">IMPRIMIR CUPOM TESTE</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- DIREITA -->
+            <div class="col">
+                <div class="row funcoes">
+                    <div class="align-self-center fw-bold">FUNÇÕES E1-BRIDGE:</div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR STATUS DO TERMINAL</button>
+                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR TIMEOUT CONFIGURADO</button>
+                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
+                    <button type="button" class="btn btn-primary btn-sm">CONFIGURAR SENHA DO TERMINAL</button>
+                    <button type="button" class="btn btn-primary btn-sm">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    private string ip = string.Empty;
+}
