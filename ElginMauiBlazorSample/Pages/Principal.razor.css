@@ -39,9 +39,12 @@
         align-items: center;
     }
 
+        .principal .seletor a:hover > .botao {
+            border-color: red;
+        }
+
         .principal .seletor a:link,
         .principal .seletor a:visited,
-        .principal .seletor a:hover,
         .principal .seletor a:active {
             color: inherit;
             text-decoration: none;
@@ -79,4 +82,5 @@
                 text-align: center;
                 align-items: center;
                 font-weight: bold;
+                cursor: pointer;
             }

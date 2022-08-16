@@ -10,15 +10,31 @@ namespace ElginMauiBlazorSample.WinUI;
 /// </summary>
 public partial class App : MauiWinUIApplication
 {
-	/// <summary>
-	/// Initializes the singleton application object.  This is the first line of authored code
-	/// executed, and as such is the logical equivalent of main() or WinMain().
-	/// </summary>
-	public App()
-	{
-		this.InitializeComponent();
-	}
+    const int WindowWidth = 800;
+    const int WindowHeight = 550;
 
-	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    /// <summary>
+    /// Initializes the singleton application object.  This is the first line of authored code
+    /// executed, and as such is the logical equivalent of main() or WinMain().
+    /// </summary>
+    public App()
+    {
+        this.InitializeComponent();
+
+        // Redimensiona a janela do windows //
+        Microsoft.Maui.Handlers.WindowHandler.Mapper.AppendToMapping(nameof(IWindow), (handler, view) =>
+        {
+            var mauiWindow = handler.VirtualView;
+            var nativeWindow = handler.PlatformView;
+            nativeWindow.Activate();
+            IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(nativeWindow);
+            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(windowHandle);
+            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            appWindow.Resize(new Windows.Graphics.SizeInt32(WindowWidth, WindowHeight));
+
+        });
+    }
+
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
 
