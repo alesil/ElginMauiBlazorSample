@@ -3,19 +3,35 @@
 namespace ElginMauiBlazorSample.Pages;
 public partial class E1Bridge : ComponentBase
 {
-    private string _ip = "192.168.3.20";
-    private int _parcelas = 1;
-    private int _valor = 200;
-    private int _portaTransacao = 3000;
-    private int _portaStatus = 3001;
-    private bool _enviarSenha = false;
-    private string _senha = string.Empty;
-
-    private bool _isCredito = true;
-    private bool _isDebito = true;
+    private Dados _dados = new();
 
     private void EnviarTransacao()
     {
-        var x = _ip;
+        
+    }
+
+    private class Dados
+    {
+        public string Ip { get; set; } = "192.168.3.20";
+        public decimal Valor { get; set; } = 2.50m;
+        public int Parcelas { get; set; } = 1;
+        public int PortaTransacao { get; set; } = 3000;
+        public int PortaStatus { get; set; } = 3001;
+        public bool EnviarSenha { get; set; } = false;
+        public string Senha { get; set; }
+        public EFormaPagamento FormaPagamento { get; set; } = EFormaPagamento.Credito;
+        public ETipoParcelamento TipoParcelamento { get; set; } = ETipoParcelamento.AVista;
+    }
+
+    private enum EFormaPagamento
+    {
+        Credito,
+        Debito
+    }
+    private enum ETipoParcelamento
+    {
+        Loja,
+        Administradora,
+        AVista
     }
 }

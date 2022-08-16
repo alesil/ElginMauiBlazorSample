@@ -3,112 +3,119 @@
 
 <h2 class="mx-3 mt-1 mb-2 fw-bold">E1 - BRIDGE</h2>
 
-<div class="container-fluid px-3">
-    <div class="col">
+<EditForm Model="@_dados">
+    <div class="container-fluid px-3">
+        <div class="col">
 
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <div class="col-5 align-self-center fw-bold">IP:</div>
-                    <div class="col"><input id="ip" class="form-control" @bind-value="_ip" inputmode="numeric" placeholder="127.0.0.1" /> </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">IP:</div>
+                        @*<div class="col"><input id="ip" class="form-control" @bind-value="_ip" inputmode="numeric" placeholder="127.0.0.1" /></div>*@
+                        <div class="col"><input id="ip" class="form-control" @bind-value="_dados.Ip" inputmode="numeric" placeholder="127.0.0.1" /></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-7 mx-0 pe-0 align-self-center fw-bold">PORTAS TRANS./STATUS:</div>
+                        <div class="col-2 mx-2 px-0"><input id="transacoes" class="form-control" inputmode="numeric" @bind-value="_dados.PortaTransacao" placeholder="3000" /></div>
+                        <div class="col-2 mx-1 px-0"><input id="slide" class="form-control" inputmode="numeric" @bind-value="_dados.PortaStatus" placeholder="3001" /></div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col-7 mx-0 pe-0 align-self-center fw-bold">PORTA TRANSAÇÃO/STATUS:</div>
-                    <div class="col-2 mx-2 px-0"><input id="transacoes" class="form-control" inputmode="numeric" @bind-value="_portaTransacao" placeholder="3000" /> </div>
-                    <div class="col-2 mx-1 px-0"><input id="slide" class="form-control" inputmode="numeric" @bind-value="_portaStatus" placeholder="3001" /> </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row mt-1">
-            <div class="col">
-                <div class="row">
-                    <div class="col-5 align-self-center fw-bold">VALOR:</div>
-                    <div class="col"><input id="valor" class="form-control" type="number" @bind-value="_valor" inputmode="numeric" placeholder="200" /> </div>
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">VALOR:</div>
+                        <div class="col"><input id="valor" class="form-control" type="number" @bind-value="_dados.Valor" inputmode="decimal" placeholder="200" /></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col-12 align-self-center fw-bold">
-                        <div class="form-check form-switch mt-1">
-                            <input class="form-check-input" type="checkbox" @bind-value="_enviarSenha" id="usar-senha">
-                            <label class="form-check-label" for="usar-senha">ENVIAR SENHA NAS TRANSAÇÕES</label>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-12 align-self-center fw-bold">
+                            <div class="form-check form-switch mt-1">
+                                <input class="form-check-input" type="checkbox" @bind-value="_dados.EnviarSenha" id="usar-senha">
+                                <label class="form-check-label" for="usar-senha">ENVIAR SENHA NAS TRANSAÇÕES</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row mt-1">
-            <div class="col">
-                <div class="row">
-                    <div class="col-5 align-self-center fw-bold">N° PARCELAS:</div>
-                    <div class="col text-end"><input id="parcelas" class="form-control" disabled="@(!_isCredito)" type="number" @bind-value="_parcelas" inputmode="numeric" placeholder="1" /></div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col-5 align-self-center fw-bold">SENHA:</div>
-                    <div class="col"><input id="senha" class="form-control" disabled="@(!_enviarSenha)" @bind-value="_senha" /> </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- PARTE DE BAIXO-->
-
-        <div class="row mt-2">
-            <!-- ESQUERDA -->
-            <div class="col">
-                <div class="row">
-                    <div class="align-self-center fw-bold">FORMAS DE PAGAMENTO: @_isCredito : @_isDebito</div>
-                    <div class="btn-group forma-pagamento" role="group">
-                        <input type="radio" class="btn-check" name="btnpagamento" @bind-value="_isCredito" id="btn-credito" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary p-1" for="btn-credito">CRÉDITO</label>
-
-                        <input type="radio" class="btn-check" name="btnpagamento" @bind-value="_isDebito"  id="btn-debito" autocomplete="off">
-                        <label class="btn btn-outline-success p-1" for="btn-debito">DÉBITO</label>
+            <div class="row mt-1">
+                <div class="col">
+                    <div class="row" style="@(_dados.FormaPagamento != EFormaPagamento.Credito || _dados.TipoParcelamento == ETipoParcelamento.AVista ? "visibility: hidden;" : string.Empty)">
+                        <div class="col-5 align-self-center fw-bold">N° PARCELAS:</div>
+                        <div class="col text-end"><input id="parcelas" class="form-control" disabled="@(_dados.FormaPagamento != EFormaPagamento.Credito || _dados.TipoParcelamento == ETipoParcelamento.AVista)" type="number" @bind-value="_dados.Parcelas" inputmode="numeric" placeholder="1" /></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="align-self-center fw-bold">TIPO DE PARCELAMENTO:</div>
-                    <div class="btn-group forma-pagamento" role="group">
-                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-loja" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary p-1" for="btn-loja">LOJA</label>
-
-                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-adm" autocomplete="off">
-                        <label class="btn btn-outline-warning p-1" for="btn-adm">ADM</label>
-
-                        <input type="radio" class="btn-check" name="btnparcelamento" id="btn-avista" autocomplete="off">
-                        <label class="btn btn-outline-success p-1" for="btn-avista">A VISTA</label>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-5 align-self-center fw-bold">SENHA:</div>
+                        <div class="col"><input id="senha" class="form-control" disabled="@(!_dados.EnviarSenha)" @bind-value="_dados.Senha" /></div>
                     </div>
                 </div>
-                <!-- BOTÕES -->
-                <div class="row mt-4">
+            </div>
+
+            <!-- PARTE DE BAIXO-->
+
+            <div class="row mt-2">
+                <!-- ESQUERDA -->
+                <div class="col">
+                    <div class="row">
+                        <InputRadioGroup TValue="EFormaPagamento" @bind-Value="_dados.FormaPagamento">
+                            <div class="align-self-center fw-bold">FORMAS DE PAGAMENTO:</div>
+                            <div class="btn-group forma-pagamento" role="group">
+                                <InputRadio Value="EFormaPagamento.Credito" class="btn-check" id="btn-credito" />
+                                <label class="btn btn-outline-primary p-1" for="btn-credito">CRÉDITO</label>
+
+                                <InputRadio Value="EFormaPagamento.Debito" class="btn-check" id="btn-debito" />
+                                <label class="btn btn-outline-success p-1" for="btn-debito">DÉBITO</label>
+                            </div>
+                        </InputRadioGroup>
+                    </div>
+                    <div class="row" style="@(_dados.FormaPagamento != EFormaPagamento.Credito ? "visibility: hidden;" : string.Empty)">
+                        <InputRadioGroup TValue="ETipoParcelamento" @bind-Value="_dados.TipoParcelamento">
+                            <div class="align-self-center fw-bold">TIPO DE PARCELAMENTO:</div>
+                            <div class="btn-group tipo-parcelamento" role="group">
+                                <InputRadio Value="ETipoParcelamento.Loja" class="btn-check" id="btn-loja" />
+                                <label class="btn btn-outline-danger p-1" for="btn-loja">LOJA</label>
+
+                                <InputRadio Value="ETipoParcelamento.Administradora" class="btn-check" id="btn-administradora" />
+                                <label class="btn btn-outline-primary p-1" for="btn-administradora">ADM</label>
+
+                                <InputRadio Value="ETipoParcelamento.AVista" class="btn-check" id="btn-avista" />
+                                <label class="btn btn-outline-success p-1" for="btn-avista">A VISTA</label>
+                            </div>
+                        </InputRadioGroup>
+                    </div>
+                    <!-- BOTÕES -->
+                    <div class="row mt-4">
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-success btn-sm" @onclick="EnviarTransacao">ENVIAR TRANSAÇÃO</button>
+                            <button type="button" class="btn btn-danger btn-sm">CANCELAR TRANSAÇÃO</button>
+                            <button type="button" class="btn btn-primary btn-sm">OPERAÇÃO ADM</button>
+                            <button type="button" class="btn btn-primary btn-sm">IMPRIMIR CUPOM TESTE</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- DIREITA -->
+                <div class="col">
+                    <div class="row funcoes">
+                        <div class="align-self-center fw-bold">FUNÇÕES E1-BRIDGE:</div>
+                    </div>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success btn-sm" @onclick="EnviarTransacao">ENVIAR TRANSAÇÃO</button>
-                        <button type="button" class="btn btn-danger btn-sm">CANCELAR TRANSAÇÃO</button>
-                        <button type="button" class="btn btn-primary btn-sm">OPERAÇÃO ADM</button>
-                        <button type="button" class="btn btn-warning btn-sm">IMPRIMIR CUPOM TESTE</button>
+                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR STATUS DO TERMINAL</button>
+                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR TIMEOUT CONFIGURADO</button>
+                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm">CONFIGURAR SENHA DO TERMINAL</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
                     </div>
                 </div>
+            </div>
 
-            </div>
-            <!-- DIREITA -->
-            <div class="col">
-                <div class="row funcoes">
-                    <div class="align-self-center fw-bold">FUNÇÕES E1-BRIDGE:</div>
-                </div>
-                <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR STATUS DO TERMINAL</button>
-                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR TIMEOUT CONFIGURADO</button>
-                    <button type="button" class="btn btn-primary btn-sm">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
-                    <button type="button" class="btn btn-primary btn-sm">CONFIGURAR SENHA DO TERMINAL</button>
-                    <button type="button" class="btn btn-primary btn-sm">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
-                </div>
-            </div>
         </div>
-
     </div>
-</div>
+</EditForm>
