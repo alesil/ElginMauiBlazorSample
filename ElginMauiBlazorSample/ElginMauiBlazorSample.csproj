@@ -26,7 +26,7 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -50,7 +50,7 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup  Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<Reference Include="daruma">
 			<HintPath>..\..\..\git-elgin\PDV_Android_M8_M10\Exemplos\App_eXperience_XamarinForms\Elgin_AppExperience_XamarinForms-font\dll\daruma.dll</HintPath>
 		</Reference>
@@ -72,6 +72,15 @@
 		<Reference Include="Satelgin-7.0.1">
 			<HintPath>..\..\..\git-elgin\PDV_Android_M8_M10\Exemplos\App_eXperience_XamarinForms\Elgin_AppExperience_XamarinForms-font\dll\SatElgin-7.0.1.dll</HintPath>
 		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="images\**" />
+	  <Compile Remove="images\**" />
+	  <Content Remove="images\**" />
+	  <EmbeddedResource Remove="images\**" />
+	  <MauiXaml Remove="images\**" />
+	  <None Remove="images\**" />
 	</ItemGroup>
 
 </Project>

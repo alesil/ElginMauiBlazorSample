@@ -1,0 +1,57 @@
+﻿.principal {
+    padding: 0.25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: stretch;
+    align-items: stretch;
+}
+
+    .principal .header {
+        padding: 1rem 0 0.5rem 0;
+        order: 0;
+        flex: 0 0 auto;
+        align-self: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+        .principal .header > .logo-elgin {
+            height: 5rem;
+            align-self: center;
+        }
+
+    .principal .seletor {
+        background-color: lightblue;
+        order: 1;
+        flex: 1 0 auto;
+        align-self: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+        .principal .seletor .botao {
+            flex: 0 0 auto;
+            align-self: center;
+            width: 9.5rem;
+            height: 10rem;
+            padding: 3rem;
+            margin: 0 .5rem 0.5rem .5rem;
+            border: 0.15rem;
+            border-radius: 1.5rem;
+            border-style: solid;
+        }
+
+            .principal .seletor .botao > a {
+                text-decoration: none;
+            }
