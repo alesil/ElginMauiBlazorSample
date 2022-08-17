@@ -93,9 +93,9 @@
                     <div class="row mt-4">
                         <div class="d-grid gap-2">
                             <button type="button" class="btn btn-success btn-sm" @onclick="EnviarTransacao">ENVIAR TRANSAÇÃO</button>
-                            <button type="button" class="btn btn-danger btn-sm">CANCELAR TRANSAÇÃO</button>
-                            <button type="button" class="btn btn-primary btn-sm">OPERAÇÃO ADM</button>
-                            <button type="button" class="btn btn-primary btn-sm">IMPRIMIR CUPOM TESTE</button>
+                            <button type="button" class="btn btn-danger btn-sm" @onclick="CancelarTransacao">CANCELAR TRANSAÇÃO</button>
+                            <button type="button" class="btn btn-primary btn-sm" @onclick="OperacaoAdministrativa">OPERAÇÃO ADM</button>
+                            <button type="button" class="btn btn-primary btn-sm" @onclick="ImprimirCupomTeste">IMPRIMIR CUPOM TESTE</button>
                         </div>
                     </div>
 
@@ -114,8 +114,8 @@
                         <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarStatusTerminal">CONSULTAR STATUS DO TERMINAL</button>
                         <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarTimeout">CONSULTAR TIMEOUT CONFIGURADO</button>
                         <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarUltimaTransacao">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm">CONFIGURAR SENHA DO TERMINAL</button>
-                        <button type="button" class="btn btn-outline-primary btn-sm">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" @onclick="ConfigurarSenhaTerminal">CONFIGURAR SENHA DO TERMINAL</button>
+                        <button type="button" class="btn btn-outline-primary btn-sm"@onclick="ConfigurarTimeoutTransacoes">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
                     </div>
                 </div>
             </div>
