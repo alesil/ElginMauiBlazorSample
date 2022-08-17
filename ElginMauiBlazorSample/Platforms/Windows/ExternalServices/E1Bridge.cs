@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 
 namespace ElginMauiBlazorSample.Platforms.Windows.ExternalServices;
-public class E1BridgeW
+public class E1BridgeWin
 {
     public const string DLL = @"Platforms\Windows\Library\E1_Bridge01_x64.dll";
 

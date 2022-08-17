@@ -1,11 +1,5 @@
 ﻿using ElginMauiBlazorSample.Platforms.Windows.ExternalServices;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 /* *** *** *** *** *** */
 /*  Platform WINDOWS   */
 /* *** *** *** *** *** */
@@ -16,54 +10,34 @@ public partial class E1BridgeService
     private partial void DoConstructor() { }
 
     public partial string IniciaVenda(int idTransacao, string pdv, string valorTotal)
-    {
-        return E1BridgeW.IniciaVenda(idTransacao, pdv, valorTotal);
-    }
+        => E1BridgeWin.IniciaVenda(idTransacao, pdv, valorTotal);
 
     public partial string IniciaVendaDebito(int idTransacao, string pdv, string valorTotal)
-    {
-        return E1BridgeW.IniciaVendaDebito(idTransacao, pdv, valorTotal);
-    }
+        => E1BridgeWin.IniciaVendaDebito(idTransacao, pdv, valorTotal);
 
     public partial string IniciaVendaCredito(int idTransacao, string pdv, string valorTotal, int tipoFinanciamento, int numParcelas)
-    {
-        return E1BridgeW.IniciaVendaCredito(idTransacao, pdv, valorTotal, tipoFinanciamento, numParcelas);
-    }
+        => E1BridgeWin.IniciaVendaCredito(idTransacao, pdv, valorTotal, tipoFinanciamento, numParcelas);
 
     public partial string IniciaCancelamentoVenda(int idTransacao, string pdv, string valorTotal, string dataHora, string nsu)
-    {
-        return E1BridgeW.IniciaCancelamentoVenda(idTransacao, pdv, valorTotal, dataHora, nsu);
-    }
+        => E1BridgeWin.IniciaCancelamentoVenda(idTransacao, pdv, valorTotal, dataHora, nsu);
 
     public partial string IniciaOperacaoAdministrativa(int idTransacao, string pvd, int operacao)
-    {
-        return E1BridgeW.IniciaOperacaoAdministrativa(idTransacao, pvd, operacao);
-    }
+        => E1BridgeWin.IniciaOperacaoAdministrativa(idTransacao, pvd, operacao);
 
     public partial string ImprimirCupomNfce(string xml, int indexcsc, string csc)
-    {
-        return E1BridgeW.ImprimirCupomNfce(xml, indexcsc, csc);
-    }
+        => E1BridgeWin.ImprimirCupomNfce(xml, indexcsc, csc);
 
     public partial string ImprimirCupomSat(string xml)
-    {
-        return E1BridgeW.ImprimirCupomSat(xml);
-    }
+        => E1BridgeWin.ImprimirCupomSat(xml);
 
     public partial string ImprimirCupomSatCancelamento(string xml, string assQRCode)
-    {
-        return E1BridgeW.ImprimirCupomSatCancelamento(xml, assQRCode);
-    }
+        => E1BridgeWin.ImprimirCupomSatCancelamento(xml, assQRCode);
 
     public partial string SetSenha(string senha, bool habilitada)
-    {
-        return E1BridgeW.SetSenha(senha, habilitada);
-    }
+        => E1BridgeWin.SetSenha(senha, habilitada);
 
     public partial string ConsultarStatus()
-    {
-        return E1BridgeW.ConsultarStatus();
-    }
+        => E1BridgeWin.ConsultarStatus();
 
     public partial string GetTimeout()
     {
@@ -72,19 +46,13 @@ public partial class E1BridgeService
     }
 
     public partial string ConsultarUltimaTransacao(string pdv)
-    {
-        return E1BridgeW.ConsultarUltimaTransacao(pdv);
-    }
+        => E1BridgeWin.ConsultarUltimaTransacao(pdv);
 
     public partial string SetSenhaServer(string senha, bool habilitada)
-    {
-        return E1BridgeW.SetSenhaServer(senha, habilitada);
-    }
+        => E1BridgeWin.SetSenhaServer(senha, habilitada);
 
     public partial string SetTimeout(int timeout)
-    {
-        return E1BridgeW.SetTimeout(timeout);
-    }
+        => E1BridgeWin.SetTimeout(timeout);
 
     public partial string GetServer()
     {
@@ -93,8 +61,6 @@ public partial class E1BridgeService
     }
 
     public partial string SetServer(string ipTerminal, int portaTransacao, int portaStatus)
-    {
-        return E1BridgeW.SetServer(ipTerminal, portaTransacao, portaStatus);
-    }
+        => E1BridgeWin.SetServer(ipTerminal, portaTransacao, portaStatus);
 }
 

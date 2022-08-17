@@ -1,6 +1,8 @@
 ﻿@page "/e1bridge"
 @inject Services.E1BridgeService E1BridgeService
 
+<Spinner Mensagem="Aguardando Retorno do Terminal..." Visible="_showSpinner" />
+
 <h2 class="mx-3 mt-1 mb-2 fw-bold">E1 - BRIDGE</h2>
 
 <EditForm Model="@_dados">
