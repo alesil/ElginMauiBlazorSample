@@ -94,7 +94,6 @@ public partial class E1BridgeService
 
     public partial string SetServer(string ipTerminal, int portaTransacao, int portaStatus)
     {
-        //var x =  E1BridgeW.SetServer(ipTerminal, portaTransacao, portaStatus);
         return E1BridgeW.SetServer(ipTerminal, portaTransacao, portaStatus);
     }
 }

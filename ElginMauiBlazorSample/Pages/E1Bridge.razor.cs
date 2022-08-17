@@ -264,7 +264,7 @@ public partial class E1Bridge : ComponentBase
         public int PortaTransacao { get; set; } = 3000;
         public int PortaStatus { get; set; } = 3001;
         public bool EnviarSenha { get; set; } = false;
-        public string Senha { get; set; }
+        public string Senha { get; set; } = String.Empty;
         public EFormaPagamento FormaPagamento { get; set; } = EFormaPagamento.Credito;
         public ETipoParcelamento TipoParcelamento { get; set; } = ETipoParcelamento.AVista;
     }
