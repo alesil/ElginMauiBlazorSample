@@ -11,7 +11,6 @@
                 <div class="col">
                     <div class="row">
                         <div class="col-5 align-self-center fw-bold">IP:</div>
-                        @*<div class="col"><input id="ip" class="form-control" @bind-value="_ip" inputmode="numeric" placeholder="127.0.0.1" /></div>*@
                         <div class="col"><input id="ip" class="form-control" @bind-value="_dados.Ip" inputmode="numeric" placeholder="127.0.0.1" /></div>
                     </div>
                 </div>
@@ -103,13 +102,18 @@
                 </div>
                 <!-- DIREITA -->
                 <div class="col">
+                    <div class="row id-pdv">
+                        <div class="align-self-center fw-bold">IDENTIFICADOR DO PDV:</div>
+                        <div class="col"><input id="id-pdv" class="form-control" @bind-value="_dados.Pdv" type="text" placeholder="Nome do PDV" /></div>
+                    </div>
+
                     <div class="row funcoes">
                         <div class="align-self-center fw-bold">FUNÇÕES E1-BRIDGE:</div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR STATUS DO TERMINAL</button>
-                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR TIMEOUT CONFIGURADO</button>
-                        <button type="button" class="btn btn-primary btn-sm">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarStatusTerminal">CONSULTAR STATUS DO TERMINAL</button>
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarTimeout">CONSULTAR TIMEOUT CONFIGURADO</button>
+                        <button type="button" class="btn btn-primary btn-sm" @onclick="ConsultarUltimaTransacao">CONSULTAR ÚLTIMA TRANSAÇÃO</button>
                         <button type="button" class="btn btn-outline-danger btn-sm">CONFIGURAR SENHA DO TERMINAL</button>
                         <button type="button" class="btn btn-outline-primary btn-sm">CONFIGURAR TIMEOUT PARA TRANSAÇÕES</button>
                     </div>

@@ -19,7 +19,7 @@ public static class MauiProgram
 		#if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
-		
+		builder.Services.AddSingleton<Services.IDialogService, Services.DialogService>();
 		builder.Services.AddSingleton<Services.E1BridgeService>();
 
 		builder.Services.AddSingleton<WeatherForecastService>();
