@@ -7,20 +7,20 @@
 <div class="container-fluid px-3">
     <div class="row">
         <div class="col-3 seletor">
-            <a>
-                <div class="botao">
+            <a @onclick="ClickImpressoraTexto">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraTexto ? "active" : string.Empty)">
                     <img class="btn-image" src="images/printerText.jpg" />
                     <label class="btn-text">IMPRESSÃO DE TEXTO</label>
                 </div>
             </a>
-            <a>
-                <div class="botao">
+            <a @onclick="ClickImpressoraBarcode">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraBarcode ? "active" : string.Empty)">
                     <img class="btn-image" src="images/printerBarCode.jpg" />
                     <label class="btn-text">IMPRESSÃO DE <br />CÓDIGO DE BARRAS</label>
                 </div>
             </a>
-            <a>
-                <div class="botao">
+            <a @onclick="ClickImpressoraImagem">
+                <div class="botao @(_paginaImpressora == EPaginaImpressora.ImpressoraImagem ? "active" : string.Empty)">
                     <img class="btn-image" src="images/printerImage.jpg" />
                     <label class="btn-text">IMPRESSÃO DE IMAGEM</label>
                 </div>
@@ -69,7 +69,20 @@
                 </EditForm>
             </div>
             <div class="row conteudo">
-                conteudo aqui
+                <CascadingValue Value="this">
+                    @switch (_paginaImpressora)
+                    {
+                        case EPaginaImpressora.ImpressoraTexto:
+                            <ImpressoraTexto />
+                            break;
+                        case EPaginaImpressora.ImpressoraBarcode:
+                            <ImpressoraBarcode />
+                            break;
+                        case EPaginaImpressora.ImpressoraImagem:
+                            <ImpressoraImagem />
+                            break;
+                    }
+                </CascadingValue>
             </div>
         </div>
     </div>

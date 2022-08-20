@@ -17,9 +17,15 @@
         border-color: red;
     }
 
-    .seletor a:link,
-    .seletor a:visited,
-    .seletor a:active {
+    .seletor a > .botao.active {
+        border-color: blue;
+    }
+
+        .seletor a > .botao.active .btn-text {
+            color: blue;
+        }
+
+    .seletor a:link, .seletor a:visited, .seletor a:active {
         color: inherit;
         text-decoration: none;
     }
@@ -146,15 +152,16 @@
         font-size: small;
         padding: 0;
     }
-    .impressora .txt-ip #ip {
-        font-size: small;
-        /*padding: 0;*/
-        height: 1.8rem;
-    }
+
+        .impressora .txt-ip #ip {
+            font-size: small;
+            /*padding: 0;*/
+            height: 1.8rem;
+        }
 
 
 .conteudo {
-    background-color: cornflowerblue;
+    /*background-color: cornflowerblue;*/
     border: 0.15rem;
     border-radius: .5rem;
     border-style: solid;

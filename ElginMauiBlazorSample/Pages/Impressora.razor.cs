@@ -1,16 +1,13 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ElginMauiBlazorSample.Pages;
 public partial class Impressora : ComponentBase
 {
     private bool _showSpinner = false;
     private readonly Dados _dados = new();
+    private EPaginaImpressora _paginaImpressora = EPaginaImpressora.ImpressoraTexto;
+
+    public RenderFragment ChildContent { get; set; }
 
     private void ShowSpinner()
     {
@@ -22,6 +19,21 @@ public partial class Impressora : ComponentBase
     {
         _showSpinner = false;
         StateHasChanged();
+    }
+
+    private void ClickImpressoraTexto()
+    {
+        _paginaImpressora = EPaginaImpressora.ImpressoraTexto;
+    }
+
+    private void ClickImpressoraBarcode()
+    {
+        _paginaImpressora = EPaginaImpressora.ImpressoraBarcode;
+    }
+
+    private void ClickImpressoraImagem()
+    {
+        _paginaImpressora = EPaginaImpressora.ImpressoraImagem;
     }
 
 
@@ -36,6 +48,13 @@ public partial class Impressora : ComponentBase
         Interna,
         Usb,
         Ethernet
+    }
+
+    private enum EPaginaImpressora
+    {
+        ImpressoraTexto,
+        ImpressoraBarcode,
+        ImpressoraImagem
     }
 }
 
