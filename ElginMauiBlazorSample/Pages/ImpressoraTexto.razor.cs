@@ -3,9 +3,10 @@
 namespace ElginMauiBlazorSample.Pages;
 public partial class ImpressoraTexto : ComponentBase
 {
+    [CascadingParameter]
+    private Impressora Parent { get; set; }
 
     private readonly Dados _dados = new();
-
 
     private class Dados
     {

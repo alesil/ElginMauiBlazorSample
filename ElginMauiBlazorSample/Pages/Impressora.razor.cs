@@ -4,18 +4,19 @@ namespace ElginMauiBlazorSample.Pages;
 public partial class Impressora : ComponentBase
 {
     private bool _showSpinner = false;
-    private readonly Dados _dados = new();
+    public readonly Dados DadosImpressora = new();
     private EPaginaImpressora _paginaImpressora = EPaginaImpressora.ImpressoraTexto;
+
 
     public RenderFragment ChildContent { get; set; }
 
-    private void ShowSpinner()
+    public void ShowSpinner()
     {
         _showSpinner = true;
         StateHasChanged();
     }
 
-    private void HideSpinner()
+    public void HideSpinner()
     {
         _showSpinner = false;
         StateHasChanged();
@@ -37,13 +38,13 @@ public partial class Impressora : ComponentBase
     }
 
 
-    private class Dados
+    public class Dados
     {
         public ETipoImpresora TipoImpresora { get; set; } = ETipoImpresora.Interna;
         public string ImpressoraIp { get; set; } = "192.168.2.160:9100";
     }
 
-    private enum ETipoImpresora
+    public enum ETipoImpresora
     {
         Interna,
         Usb,
