@@ -84,13 +84,10 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
-	  <None Update="Platforms\Windows\Library\E1_Bridge01.dll">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
 	  <None Update="Platforms\Windows\Library\E1_Bridge01_x64.dll">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
-	  <None Update="Platforms\Windows\Library\E1_Bridge01_x86.dll">
+	  <None Update="Platforms\Windows\Library\E1_Impressora01.dll">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
