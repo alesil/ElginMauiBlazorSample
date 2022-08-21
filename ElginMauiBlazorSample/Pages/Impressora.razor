@@ -1,6 +1,7 @@
 ﻿@page "/impressora"
+@inject Services.PrinterService PrinterService
 
-<Spinner Mensagem="Aguardando Impressão..." Visible="_showSpinner" />
+<Spinner Mensagem="@_messageSpinner" Visible="_showSpinner" />
 
 <h2 class="mx-3 mt-1 mb-2 fw-bold">IMPRESSORA</h2>
 
@@ -25,19 +26,19 @@
                     <label class="btn-text">IMPRESSÃO DE IMAGEM</label>
                 </div>
             </a>
-            <a>
+            <a @onclick="VerificarStatusGaveta">
                 <div class="botao-status">
                     <img class="btn-image" src="images/status.png" />
                     <label class="btn-text">STATUS DA GAVETA</label>
                 </div>
             </a>
-            <a>
+            <a @onclick="VerificarStatusImpressora">
                 <div class="botao-status">
                     <img class="btn-image" src="images/status.png" />
                     <label class="btn-text">STATUS DA IMPRESSORA</label>
                 </div>
             </a>
-            <a>
+            <a @onclick="AbrirGaveta">
                 <div class="botao-abrir-gaveta">
                     <label class="btn-text">ABRIR GAVETA</label>
                 </div>

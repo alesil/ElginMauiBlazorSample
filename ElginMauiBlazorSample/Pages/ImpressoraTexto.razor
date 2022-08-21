@@ -1,4 +1,6 @@
-﻿<h5 class="mx-0 mt-1 mb-2 fw-bold text-center">IMPRESSÃO DE TEXTO</h5>
+﻿@inject Services.PrinterService PrinterService
+
+<h5 class="mx-0 mt-1 mb-2 fw-bold text-center">IMPRESSÃO DE TEXTO</h5>
 <div class="container-fluid px-3">
     <EditForm Model="@_dados">
 
@@ -29,8 +31,8 @@
                 <div class="col-3 align-self-center fw-bold label">FONT FAMILY:</div>
                 <div class="col-3">
                     <InputSelect @bind-Value="_dados.FontFamily" class="form-select lista">
-                        <option value="A">FONT A</option>
-                        <option value="B">FONT B</option>
+                        <option value="FONT A">FONT A</option>
+                        <option value="FONT B">FONT B</option>
                     </InputSelect>
                 </div>
                 <div class="col-3 align-self-center fw-bold label">FONT SIZE:</div>
@@ -61,7 +63,7 @@
             </div>
             <div class="row ms-1">
                 <div class="row mt-4">
-                    <button class="btn-primary rounded-3">IMPRIMIR TEXTO</button>
+                    <button @onclick="ImprimirTexto" class="btn-primary rounded-3">IMPRIMIR TEXTO</button>
                 </div>
                 <div class="row mt-2">
                     <div class="col row me-1">

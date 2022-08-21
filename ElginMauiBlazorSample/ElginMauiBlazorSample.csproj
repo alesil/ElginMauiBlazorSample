@@ -95,4 +95,10 @@
 	  </None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Platforms\Windows\Services\PrinterService.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

@@ -21,6 +21,7 @@ public static class MauiProgram
 #endif
 		builder.Services.AddSingleton<Services.IDialogService, Services.DialogService>();
 		builder.Services.AddSingleton<Services.E1BridgeService>();
+		builder.Services.AddSingleton<Services.PrinterService>();
 
 		builder.Services.AddSingleton<WeatherForecastService>();
 
