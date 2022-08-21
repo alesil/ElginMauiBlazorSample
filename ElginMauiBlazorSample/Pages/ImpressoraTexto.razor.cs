@@ -1,17 +1,17 @@
-﻿using BR.Com.Daruma.Framework.Mobile.Sat.Impostos;
-using ElginMauiBlazorSample.Services;
+﻿using ElginMauiBlazorSample.Services;
 
 using Microsoft.AspNetCore.Components;
 
-using static Android.Hardware.Camera;
-
-using System.Runtime.CompilerServices;
+using System.Xml;
 
 namespace ElginMauiBlazorSample.Pages;
 public partial class ImpressoraTexto : ComponentBase
 {
     [CascadingParameter]
     private Impressora Parent { get; set; }
+
+    private const string nomeXmlSat = "xmlsat.xml";
+    private const string nomeXmlNFCE = "xmlnfce.xml";
 
     private readonly Dados _dados = new();
 
@@ -20,8 +20,8 @@ public partial class ImpressoraTexto : ComponentBase
 
     private async void ImprimirTexto()
     {
-        ShowSpinner("Imprimindo...");
         await Parent.VerificarConexaoImpressora();
+        ShowSpinner("Imprimindo texo...");
 
         var parametros = new Dictionary<string, string>();
 
@@ -63,6 +63,55 @@ public partial class ImpressoraTexto : ComponentBase
             await PrinterService.CutPaperAsync(1);
         }
         HideSpinner();
+    }
+
+    private async void ImprimirNfce()
+    {
+        await Parent.VerificarConexaoImpressora();
+        ShowSpinner("Imprimindo NFCe...");
+        Dictionary<string, object> parametros = new()
+        {
+            ["xmlNFCe"] = await ReadTextFile(nomeXmlNFCE),
+            ["indexcsc"] = 1,
+            ["csc"] = "CODIGO-CSC-CONTRIBUINTE-36-CARACTERES",
+            ["param"] = 0
+        };
+
+        await PrinterService.ImprimeXMLNFCeAsync(parametros);
+        await PrinterService.JumpLineAsync();
+
+        if (_dados.CutPaper)
+        {
+            await PrinterService.CutPaperAsync(1);
+        }
+        HideSpinner();
+    }
+
+    private async void ImprimirSat()
+    {
+        await Parent.VerificarConexaoImpressora();
+        ShowSpinner("Imprimindo CFe-SAT...");
+        Dictionary<string, object> parametros = new()
+        {
+            ["xmlSAT"] = await ReadTextFile(nomeXmlSat),
+            ["param"] = 0
+        };
+
+        await PrinterService.ImprimeXMLSATAsync(parametros);
+        await PrinterService.JumpLineAsync();
+
+        if (_dados.CutPaper)
+        {
+            await PrinterService.CutPaperAsync(1);
+        }
+        HideSpinner();
+    }
+
+    private async Task<string> ReadTextFile(string filePath)
+    {
+        using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
+        using StreamReader reader = new(fileStream);
+        return await reader.ReadToEndAsync();
     }
 
     private class Dados

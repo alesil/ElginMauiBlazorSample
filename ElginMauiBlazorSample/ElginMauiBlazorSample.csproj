@@ -96,6 +96,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\cancelamentosatgo.xml" />
+	  <None Remove="Resources\Raw\satgo3.xml" />
+	  <None Remove="Resources\Raw\xmlcancelarultimavendasat.xml" />
+	  <None Remove="Resources\Raw\xmlenviadadosvendasat.xml" />
+	  <None Remove="Resources\Raw\xmlnfce.xml" />
+	  <None Remove="Resources\Raw\xmlsat.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Platforms\Windows\Services\PrinterService.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
