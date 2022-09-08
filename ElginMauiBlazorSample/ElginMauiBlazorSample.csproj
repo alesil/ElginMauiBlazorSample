@@ -50,6 +50,7 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<!--
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<Reference Include="daruma">
 			<HintPath>..\..\..\git-elgin\PDV_Android_M8_M10\Exemplos\App_eXperience_XamarinForms\Elgin_AppExperience_XamarinForms-font\dll\daruma.dll</HintPath>
@@ -73,6 +74,7 @@
 			<HintPath>..\..\..\git-elgin\PDV_Android_M8_M10\Exemplos\App_eXperience_XamarinForms\Elgin_AppExperience_XamarinForms-font\dll\SatElgin-7.0.1.dll</HintPath>
 		</Reference>
 	</ItemGroup>
+	-->
 
 	<ItemGroup>
 	  <AndroidResource Remove="images\**" />
@@ -105,6 +107,14 @@
 	  <Compile Update="Platforms\Windows\Services\PrinterService.cs">
 	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+	  <ProjectReference Include="..\InterfaceAutomacao\InterfaceAutomacao.csproj" />
+	  <ProjectReference Include="..\E1\E1.csproj" />
+	  <ProjectReference Include="..\MiniPdvM8\MiniPdvM8.csproj" />
+	  <ProjectReference Include="..\SatElgin\SatElgin.csproj" />
+	  <ProjectReference Include="..\Scanner\Scanner.csproj" />
 	</ItemGroup>
 
 </Project>

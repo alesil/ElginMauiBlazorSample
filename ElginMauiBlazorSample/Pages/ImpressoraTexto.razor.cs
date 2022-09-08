@@ -77,9 +77,30 @@ public partial class ImpressoraTexto : ComponentBase
             ["param"] = 0
         };
 
+
+        Dictionary<string, string> parametrosQrCode = new()
+        {
+            ["text"] = "CODIGO-CSC-CONTRIBUINTE-36-CARACTERES",
+            ["align"] = "Centralizado",
+            ["qrSize"] = "6",
+        };
+        //await PrinterService.ImprimeQR_CODEAsync(parametrosQrCode);
+
+        Dictionary<string, string> parametrosBarCode = new()
+        {
+            ["barCodeType"] = "EAN 13",  // EAN-13
+            ["text"] = "0123456789012",
+            ["align"] = "Centralizado",
+            ["height"] = "120",
+            ["width"] = "6",
+        };
+        var x = await PrinterService.ImprimeBarCodeAsync(parametrosBarCode);
+
+
+        /*
         await PrinterService.ImprimeXMLNFCeAsync(parametros);
         await PrinterService.JumpLineAsync();
-
+        */
         if (_dados.CutPaper)
         {
             await PrinterService.CutPaperAsync(1);
